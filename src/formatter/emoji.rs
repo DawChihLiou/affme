@@ -1,5 +1,6 @@
 use crate::random;
 
+#[derive(Debug)]
 pub struct Emoji {
     emojis: Vec<String>,
 }
