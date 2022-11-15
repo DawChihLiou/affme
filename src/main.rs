@@ -1,10 +1,6 @@
-mod affirmation;
-mod formatter;
-mod random;
+extern crate affme;
 
-use affirmation::Affirmation;
-use formatter::format;
-
+use affme::affirm;
 use clap::Parser;
 
 /// ✏️  Simple program to show affirmations to someone
@@ -18,8 +14,7 @@ pub struct Args {
 
 fn main() {
     let name = Args::parse().name;
-    let affirmation = Affirmation::new().random();
-    let output = format(&affirmation, &name);
+    let output = affirm(&name);
 
     println!("{}", output);
 }
