@@ -8,5 +8,5 @@ use formatter::format;
 pub fn affirm(name: &str) -> String {
     let affirmation = Affirmation::new().random();
 
-    format(&affirmation, &name)
+    format(affirmation, name)
 }

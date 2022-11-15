@@ -1,11 +1,11 @@
 use crate::random;
 
 #[derive(Debug)]
-pub struct Affirmation {
-    affirmations: Vec<String>,
+pub struct Affirmation<'a> {
+    affirmations: [&'a str; 6],
 }
 
-impl Affirmation {
+impl<'a> Affirmation<'a> {
     pub fn new() -> Self {
         let affirmations = [
             "You're beautiful",
@@ -14,14 +14,12 @@ impl Affirmation {
             "You've got this",
             "You can do all things",
             "Go get it",
-        ]
-        .map(String::from)
-        .to_vec();
+        ];
 
         Affirmation { affirmations }
     }
 
-    pub fn random(&self) -> String {
-        random::pick(&self.affirmations).unwrap_or("You're the best".to_string())
+    pub fn random(&self) -> &'a str {
+        random::pick(&self.affirmations)
     }
 }

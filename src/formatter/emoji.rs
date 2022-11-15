@@ -1,26 +1,18 @@
 use crate::random;
 
 #[derive(Debug)]
-pub struct Emoji {
-    emojis: Vec<String>,
+pub struct Emoji<'a> {
+    emojis: [&'a str; 7],
 }
 
-impl Emoji {
+impl<'a> Emoji<'a> {
     pub fn new() -> Self {
-        let emojis: Vec<String> = vec!["😍", "😎", "🧸", "😉", "👍", "💪", "✨"]
-            .into_iter()
-            .map(String::from)
-            .collect();
+        let emojis = ["😍", "😎", "🧸", "😉", "👍", "💪", "✨"];
 
         Emoji { emojis }
     }
 
-    pub fn random(&self) -> String {
-        let emoji = random::pick(&self.emojis);
-
-        match emoji {
-            Some(value) => value,
-            None => "💙".to_string(),
-        }
+    pub fn random(&self) -> &'a str {
+        random::pick(&self.emojis)
     }
 }
