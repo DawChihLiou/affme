@@ -2,6 +2,8 @@
 
 Simple CLI in Rust to show affirmations to someone.
 
+![Demo](./demo.gif)
+
 ## Usage
 
 ```bash
