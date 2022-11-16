@@ -1,5 +1,3 @@
-extern crate affme;
-
 use affme::affirm;
 use clap::Parser;
 
