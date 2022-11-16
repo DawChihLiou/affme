@@ -1,20 +1,18 @@
 use crate::random;
 
 #[derive(Debug)]
-pub struct Color {
-    colors: Vec<String>,
+pub struct Color<'a> {
+    colors: [&'a str; 6],
 }
 
-impl Color {
+impl<'a> Color<'a> {
     pub fn new() -> Self {
-        let colors: Vec<String> = ["red", "blue", "green", "yellow", "magenta", "cyan"]
-            .map(String::from)
-            .to_vec();
+        let colors = ["red", "blue", "green", "yellow", "magenta", "cyan"];
 
         Color { colors }
     }
 
-    pub fn random(&self) -> String {
-        random::pick(&self.colors).unwrap_or("yellow".to_string())
+    pub fn random(&self) -> &'a str {
+        random::pick(&self.colors)
     }
 }
